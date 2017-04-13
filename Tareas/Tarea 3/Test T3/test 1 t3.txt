@@ -1,0 +1,673 @@
+DATA:
+path	8
+size	10
+graph	0
+		1
+		1
+		1
+		1
+		1
+		1
+		1
+		1
+		1
+		0
+		0
+		1
+		1
+		1
+		1
+		1
+		1
+		1
+		1
+		0
+		0
+		0
+		1
+		1
+		1
+		1
+		1
+		1
+		1
+		0
+		0
+		0
+		0
+		1
+		1
+		1
+		1
+		1
+		1
+		0
+		0
+		0
+		0
+		0
+		1
+		1
+		1
+		1
+		1
+		0
+		0	
+		0	
+		0	
+		0	
+		0	
+		1	
+		1	
+		1	
+		1
+		0
+		0
+		0
+		0
+		0	
+		0	
+		0	
+		1	
+		1	
+		1
+		0
+		0	
+		0	
+		0
+		0
+		0
+		0
+		0
+		1
+		1
+		0	
+		0	
+		0	
+		0	
+		0	
+		0	
+		0	
+		0	
+		0	
+		1
+		0
+		0
+		0	
+		0
+		0
+		0	
+		0	
+		0	
+		0
+		0
+origin	1
+end		10
+
+contadormult 0
+operando1 0
+operando2 0
+resultadomult 0
+
+supercontador 1
+
+contadorexistenciafil 0
+goalexistenciafil 0
+contadorexistenciacol 0
+goalexistenciacol 0
+
+temporary 0
+
+acumuladologic 0
+resultadologic 0
+
+globalfilaactual 0
+globalcolactual 0
+
+filaactualorig 0
+contadorfilaorig 0
+colactualorig 0
+contadorcolorig 0
+
+filaactualacum 0
+contadorfilaacum 0
+colactualacum 0
+contadorcolacum 0
+
+
+filaactualtres 0
+contadorfilatres 0
+colactualtres 0
+contadorcoltres 0
+
+graphacumulado 0
+CODE:
+JMP init
+mult:
+
+MOV A,0
+MOV B,(operando1)
+CMP A,B
+JEQ endmultifcero
+
+MOV A,0
+MOV B,(operando2)
+CMP A,B
+JEQ endmultifcero
+
+MOV A, (operando1)
+MOV (resultadomult), A
+MOV B, 1
+MOV (contadormult), B
+MOV A, (operando2)
+MOV B, (contadormult)
+CMP A, B
+JEQ endmult
+
+mainmult:
+MOV A, (resultadomult)
+MOV B, (operando1)
+ADD A, B
+MOV (resultadomult), A
+MOV B, (contadormult)
+INC B
+MOV (contadormult), B
+MOV A, (operando2)
+CMP A,B
+JEQ endmult
+JMP mainmult
+
+endmultifcero:
+MOV A, 0
+MOV (resultadomult), A
+JMP endmult
+
+endmult:
+MOV A, 0
+MOV (contadormult), A
+MOV (operando1), A
+MOV (operando2), A
+RET
+
+avanzarcolorig :
+MOV A, (colactualorig)
+INC A
+MOV (colactualorig), A
+MOV A, (contadorcolorig)
+INC A
+MOV (contadorcolorig), A
+RET
+
+avanzarfilaorig :
+MOV A, (size)
+MOV B, (filaactualorig)
+ADD A, B
+MOV (filaactualorig), A
+MOV A, (contadorfilaorig)
+INC A
+MOV (contadorfilaorig), A
+RET
+
+avanzarcolacum :
+MOV A, (colactualacum)
+INC A
+MOV (colactualacum), A
+MOV A, (contadorcolacum)
+INC A
+MOV (contadorcolacum), A
+RET
+
+avanzarfilaacum :
+MOV A, (size)
+MOV B, (filaactualacum)
+ADD A, B
+MOV (filaactualacum), A
+MOV A, (contadorfilaacum)
+INC A
+MOV (contadorfilaacum), A
+RET
+
+avanzarcoltres :
+MOV A, (colactualtres)
+INC A
+MOV (colactualtres), A
+MOV A, (contadorcoltres)
+INC A
+MOV (contadorcoltres), A
+RET
+
+avanzarfilatres :
+MOV A, (size)
+MOV B, (filaactualtres)
+ADD A, B
+MOV (filaactualtres), A
+MOV A, (contadorfilatres)
+INC A
+MOV (contadorfilatres), A
+RET
+
+avanzarcolglobal:
+MOV A, (globalcolactual)
+INC A
+MOV (globalcolactual), A
+RET
+
+avanzarfilaglobal:
+MOV A, (globalfilaactual)
+INC A
+MOV (globalfilaactual), A
+RET
+
+obtenerelementoorig:
+MOV (temporary), B
+MOV A, (filaactualorig)
+MOV B, (colactualorig)
+ADD B, A
+MOV A, (B)
+MOV B, (temporary)
+RET
+
+obtenerelementoacum:
+MOV (temporary), A
+MOV A, (filaactualacum)
+MOV B, (colactualacum)
+ADD B, A
+MOV A, (B)
+MOV B, A
+MOV A, (temporary)
+RET
+
+obtenerelementotres:
+MOV (temporary), B
+MOV A, (filaactualtres)
+MOV B, (colactualtres)
+ADD B, A
+MOV A, (B)
+MOV B, (temporary)
+RET
+
+obtenerdirmemoriaelementotres:
+MOV (temporary), A
+MOV A, (filaactualtres)
+MOV B, (colactualtres)
+ADD B, A
+MOV A, (temporary)
+RET
+
+obtenerdirmemoriaelementoacum:
+MOV (temporary), A
+MOV A, (filaactualacum)
+MOV B, (colactualacum)
+ADD B, A
+MOV A, (temporary)
+RET
+
+
+itercopyorigacum:
+CALL obtenerelementoorig
+CALL obtenerdirmemoriaelementoacum
+MOV (B), A
+
+CALL avanzarcolorig
+CALL avanzarcolacum
+
+MOV A, (contadorcolacum)
+MOV B, (size)
+CMP A, B
+JEQ sgtefilaorigacum
+JMP itercopyorigacum
+
+sgtefilaorigacum:
+MOV A, 0
+MOV (contadorcolacum), A
+MOV (contadorcolorig), A
+MOV (colactualacum), A
+MOV (colactualorig), A
+
+CALL avanzarfilaorig
+CALL avanzarfilaacum
+
+MOV A, (contadorfilaorig)
+MOV B, (size)
+CMP A, B
+JEQ enditercopyorigacum
+JMP itercopyorigacum
+
+enditercopyorigacum:
+CALL resettodo
+RET
+
+itercopytresacum:
+CALL obtenerelementotres
+CALL obtenerdirmemoriaelementoacum
+MOV (B), A
+
+CALL avanzarcoltres
+CALL avanzarcolacum
+
+MOV A, (contadorcolacum)
+MOV B, (size)
+CMP A, B
+JEQ sgtefilatresacum
+JMP itercopytresacum
+
+sgtefilatresacum:
+MOV A, 0
+MOV (contadorcolacum), A
+MOV (contadorcoltres), A
+MOV (colactualacum), A
+MOV (colactualtres), A
+
+CALL avanzarfilatres
+CALL avanzarfilaacum
+
+MOV A, (contadorfilatres)
+MOV B, (size)
+CMP A, B
+JEQ enditercopytresacum
+JMP itercopytresacum
+
+enditercopytresacum:
+CALL resettodo
+RET
+
+resettodo:
+MOV A, 0
+CALL resetcolactualacum
+CALL resetcolactualorig
+CALL resetcolactualtres
+CALL resetfilaactualorig
+CALL resetfilaactualacum
+CALL resetfilaactualtres
+RET
+
+resetfilaactualtres:
+MOV A, graphacumulado
+MOV (temporary), A
+MOV A, (size)
+MOV (operando1), A
+MOV (operando2), A
+CALL mult
+MOV A, (temporary)
+MOV B, (resultadomult)
+ADD A, B
+MOV (filaactualtres), A
+MOV A, 0
+MOV (contadorfilatres), A
+RET
+
+
+resetcolactualacum:
+MOV A,0
+MOV (contadorcolacum), A
+MOV (colactualacum), A
+RET
+
+resetcolactualorig:
+MOV A,0
+MOV (contadorcolorig), A
+MOV (colactualorig), A
+RET
+
+resetcolactualtres:
+MOV A,0
+MOV (contadorcoltres), A
+MOV (colactualtres), A
+RET
+
+resetcolglobal:
+MOV A, 0
+MOV (globalcolactual), A
+RET
+
+resetfilaglobal:
+MOV A, 0
+MOV (globalfilaactual), A
+RET
+
+resetfilaactualorig:
+MOV A, graph
+MOV (filaactualorig), A
+MOV A, 0
+MOV (contadorfilaorig), A
+RET
+
+resetfilaactualacum:
+MOV A, graphacumulado
+MOV (filaactualacum), A
+MOV A, 0
+MOV (contadorfilaacum), A
+RET
+
+resetlogic:
+MOV A,0
+MOV (acumuladologic), A
+MOV (resultadologic), A
+RET
+
+multiplicarmatriz:
+MOV A, 0
+MOV (resultadologic), A
+MOV (globalfilaactual), A
+MOV (globalcolactual), A
+
+
+JMP chequeoinicial
+
+globalnextline:
+CALL avanzarfilaorig
+CALL avanzarfilaglobal
+CALL avanzarfilatres
+CALL resetcolactualacum
+CALL resetcolglobal
+CALL resetcolactualorig
+CALL resetcolactualtres
+
+MOV A, (globalfilaactual)
+MOV B, (size)
+CMP A, B
+JEQ fincalcmatriz
+JMP chequeoinicial
+
+chequeoinicial:
+CALL obtenerelementoorig
+CALL obtenerelementoacum
+
+AND A, B
+MOV B, 1
+CMP A, B
+JEQ exito
+JMP colinternasiguiente
+
+colinternasiguiente:
+CALL avanzarcolorig
+CALL avanzarfilaacum
+MOV A, (colactualorig)
+MOV B, (size)
+CMP A, B
+JEQ endmultiplicarmatriz
+JMP chequeoinicial
+
+exito:
+MOV B, 1
+MOV (resultadologic), B
+JMP endmultiplicarmatriz
+
+endmultiplicarmatriz:
+ 
+MOV A, (resultadologic)
+CALL obtenerdirmemoriaelementotres
+MOV (B), A
+ 
+
+CALL avanzarcolacum
+CALL avanzarcolglobal
+CALL avanzarcoltres
+CALL resetcolactualorig
+CALL resetfilaactualacum
+
+MOV A, 0
+MOV (resultadologic), A
+MOV A, (globalcolactual)
+MOV B, (size)
+CMP A, B
+JEQ globalnextline
+JMP chequeoinicial
+
+fincalcmatriz:
+CALL resetfilaglobal
+CALL resettodo
+RET
+
+chequiarexistencia:
+CALL settiarexistenciafila
+CALL settiarexistenciacol
+CALL obtenerelementotres
+MOV B, 1
+CMP A, B
+JEQ existepath
+JMP nohaypath
+
+existepath:
+MOV A, 0
+MOV (contadorexistenciafil), A
+MOV (contadorexistenciacol), A
+CALL resettodo
+MOV A, 1
+RET
+
+nohaypath:
+MOV A, 0
+MOV (contadorexistenciafil), A
+MOV (contadorexistenciacol), A
+CALL resettodo
+MOV A, 0
+RET
+
+settiarexistenciafila:
+MOV A, (contadorexistenciafil)
+MOV B, (goalexistenciafil)
+CMP A,B
+JEQ readysetfila
+CALL avanzarfilatres
+MOV A, (contadorexistenciafil)
+INC A
+MOV (contadorexistenciafil), A
+JMP settiarexistenciafila
+readysetfila:
+RET
+
+settiarexistenciacol:
+MOV A, (contadorexistenciacol)
+MOV B, (goalexistenciacol)
+CMP A,B
+JEQ readysetcol
+CALL avanzarcoltres
+MOV A, (contadorexistenciacol)
+INC A
+MOV (contadorexistenciacol), A
+JMP settiarexistenciacol
+readysetcol:
+RET
+
+chequiarexistenciaoriginal:
+CALL settiarexistenciafilaorig
+CALL settiarexistenciacolorig
+CALL obtenerelementoorig
+MOV B, 1
+CMP A, B
+JEQ existepathorig
+JMP nohaypathorig
+
+existepathorig:
+MOV A, 0
+MOV (contadorexistenciafil), A
+MOV (contadorexistenciacol), A
+CALL resettodo
+MOV A, 1
+RET
+
+nohaypathorig:
+MOV A, 0
+MOV (contadorexistenciafil), A
+MOV (contadorexistenciacol), A
+CALL resettodo
+MOV A, 0
+RET
+
+settiarexistenciafilaorig:
+MOV A, (contadorexistenciafil)
+MOV B, (goalexistenciafil)
+CMP A,B
+JEQ readysetfilaorig
+CALL avanzarfilaorig
+MOV A, (contadorexistenciafil)
+INC A
+MOV (contadorexistenciafil), A
+JMP settiarexistenciafilaorig
+readysetfilaorig:
+RET
+
+settiarexistenciacolorig:
+MOV A, (contadorexistenciacol)
+MOV B, (goalexistenciacol)
+CMP A,B
+JEQ readysetcolorig
+CALL avanzarcolorig
+MOV A, (contadorexistenciacol)
+INC A
+MOV (contadorexistenciacol), A
+JMP settiarexistenciacolorig
+readysetcolorig:
+RET
+
+
+
+init:
+MOV A, (origin)
+DEC A
+MOV (goalexistenciafil), A
+MOV A, (end)
+DEC A
+MOV (goalexistenciacol), A
+
+CALL resetfilaactualorig
+CALL resetfilaactualacum
+CALL resetfilaactualtres
+
+CALL chequiarexistenciaoriginal
+MOV B, 1
+CMP A, B
+JEQ pathencontrado
+
+CALL itercopyorigacum
+
+superiteracion:
+CALL multiplicarmatriz
+CALL chequiarexistencia
+MOV B, 1
+CMP A, B
+JEQ pathencontrado
+
+MOV A, (supercontador)
+INC A
+MOV (supercontador), A
+MOV B, (size)
+CMP A, B
+JEQ nopathencontrado
+CALL itercopytresacum
+JMP superiteracion
+
+
+
+pathencontrado:
+MOV A, 1
+MOV (path), A
+JMP superend
+
+nopathencontrado:
+MOV A, 0
+MOV (path), A
+JMP superend
+
+superend:

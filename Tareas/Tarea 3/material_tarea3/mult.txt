@@ -1,0 +1,16 @@
+DATA:
+f1	2
+f2	3
+res	0
+CODE:
+MOV A,0
+MOV B,0
+MOV A,(f1)
+ADD A,1
+MOV B,(f2)
+mult:
+ADD B,(f2)
+SUB A,1
+CMP A,0
+JNE mult
+MOV (res),B

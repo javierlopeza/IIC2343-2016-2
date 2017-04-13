@@ -1,0 +1,197 @@
+DATA:
+matriz1	1	// INPUT
+		2
+		3
+		4
+		5
+		6
+		7
+		8
+		9
+vector1 0
+vector2 0
+size 3		// INPUT (numero de nodos)
+var1 0  	// DEFAULT 0
+var2 0 		// DEFAULT 0
+res 0 		// DEFAULT 0
+i 0			// DEFAULT 0
+iv1 0 		// DEFAULT 0   indice vector1
+iv2 0 		// DEFAULT 0   indice vector2
+prodpunto 0	// RESULTADO
+im3 0		// indice matriz3
+sqrsize 0	// DEFAULT 0
+sqrsize2 0	// doble del cuadrado
+matriz2 0	// DEFAULT
+
+
+CODE:
+
+// Caso 1 Nodo
+MOV A,(size)
+CMP A,1
+JEQ end
+
+
+// Calcular cuadrado del size
+MOV A,(size)
+MOV (sqrsize),A
+MOV B,A
+CMP A,1
+JEQ create
+sqra:
+MOV A,(sqrsize)
+ADD A,(size)
+MOV (sqrsize),A
+MOV A,B
+SUB A,1
+MOV B,A
+CMP A,1
+JNE sqra
+
+
+// Crear matriz vacia auxiliar
+MOV A,0
+MOV (i),A
+
+create:
+MOV B,matriz2
+ADD A,B
+MOV B,A
+MOV (B),0
+
+MOV A,(i)
+ADD A,1
+MOV (i),A
+CMP A,(sqrsize)
+JNE create
+
+
+
+// Copiar matriz1 en matriz2
+MOV A,0
+MOV (i),A
+
+copy:
+MOV B,matriz2
+ADD A,B
+MOV B,A
+MOV (var2),B
+
+MOV A,matriz1
+ADD A,(i)
+MOV B,A
+MOV B,(B)
+MOV A,B
+MOV B,(var2)
+MOV (B),A
+
+MOV A,(i)
+ADD A,1
+MOV (i),A
+CMP A,(sqrsize)
+JNE copy
+
+
+
+// Copiar matriz1 en matriz 3
+MOV A,(sqrsize)
+MOV (i),A
+MOV B,(sqrsize)
+ADD (sqrsize2)
+MOV A,(i)
+
+copy3:
+MOV B,matriz2
+ADD A,B
+MOV B,A
+MOV (var2),B
+MOV A,matriz1
+SUB A,(sqrsize)
+ADD A,(i)
+MOV B,A
+MOV B,(B)
+MOV A,B
+MOV B,(var2)
+MOV (B),A
+
+MOV A,(i)
+ADD A,1
+MOV (i),A
+CMP A,(sqrsize2)
+JNE copy3
+
+
+
+
+
+
+// init: iv2 = size
+ppunto:
+MOV A,(size)
+MOV (iv2),A
+
+JMP init
+
+mult:
+MOV A,0
+MOV (res),A
+MOV (i),A
+
+MOV A,(iv1)
+MOV B,A
+MOV A,(B)
+CMP A,0
+JEQ endstart
+MOV A,(iv2)
+MOV B,A
+MOV A,(B)
+CMP A,0
+JEQ endstart
+
+start:
+MOV A,(res)
+ADD A,(var2)
+MOV (res),A
+MOV A,(i)
+ADD A,1
+MOV (i),A
+MOV B,(var1)
+CMP A,B
+JLT start
+endstart:
+RET
+
+init:
+MOV A,(vector1)
+MOV (var1),A
+MOV A,(vector2)
+MOV (var2),A
+CALL mult
+MOV A, (prodpunto)
+ADD A,(res)
+MOV (prodpunto),A
+
+continuar:
+MOV A,(iv2)
+ADD A,1
+MOV (iv2),A
+MOV A,(iv1)
+ADD A,1
+MOV (iv1),A
+MOV B,(size)
+CMP A,B
+JEQ end
+
+MOV B,(iv1)
+MOV A,(B)
+MOV (var1),A
+MOV B,(iv2)
+MOV A,(B)
+MOV (var2),A
+CALL mult
+MOV A,(prodpunto)
+ADD A,(res)
+MOV (prodpunto),A
+JMP continuar
+
+end:

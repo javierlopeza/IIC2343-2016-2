@@ -1,0 +1,359 @@
+Estado Inicial Memoria Principal
+---------------------------------------
+           MEMORIA PRINCIPAL
+---------------------------------------
+MARCO        PROCESO        ORDEN
+0(0)         --             1
+1(1)         --             2
+
+
+Ξ Cambio de contexto: P1 toma el control de la CPU.
+
+Proceso P1 solicita acceso a dirección virtual = 0
+-> page-fault : no existe la entrada en la tabla de páginas.
+-> Se mapea la página 0 del proceso actual P1 al marco 0 que está sin uso.
+---------------------------------------
+           MEMORIA PRINCIPAL
+---------------------------------------
+MARCO        PROCESO        ORDEN
+0(0)         P1             2
+1(1)         --             1
+
+Proceso P1 solicita acceso a dirección virtual = 8
+-> page-fault : no existe la entrada en la tabla de páginas.
+-> Se mapea la página 1 del proceso actual P1 al marco 1 que está sin uso.
+---------------------------------------
+           MEMORIA PRINCIPAL
+---------------------------------------
+MARCO        PROCESO        ORDEN
+0(0)         P1             1
+1(1)         P1             2
+
+Proceso P1 solicita acceso a dirección virtual = 16
+-> page-fault : no existe la entrada en la tabla de páginas.
+-> swap-out del marco 0 asociado al proceso P1.
+-> Se mapea la página 2 del proceso actual P1 al marco 0.
+---------------------------------------
+           MEMORIA PRINCIPAL
+---------------------------------------
+MARCO        PROCESO        ORDEN
+0(0)         P1             2
+1(1)         P1             1
+
+Proceso P1 solicita acceso a dirección virtual = 1
+-> La página está en la tabla de páginas del proceso actual.
+-> page-fault : el marco asociado a la página está en el disco.
+-> swap-out del marco 1 asociado al proceso P1.
+-> Se mapea la página 0 del proceso actual P1 al marco 1.
+---------------------------------------
+           MEMORIA PRINCIPAL
+---------------------------------------
+MARCO        PROCESO        ORDEN
+0(0)         P1             1
+1(1)         P1             2
+
+Proceso P1 solicita acceso a dirección virtual = 9
+-> La página está en la tabla de páginas del proceso actual.
+-> page-fault : el marco asociado a la página está en el disco.
+-> swap-out del marco 0 asociado al proceso P1.
+-> Se mapea la página 1 del proceso actual P1 al marco 0.
+---------------------------------------
+           MEMORIA PRINCIPAL
+---------------------------------------
+MARCO        PROCESO        ORDEN
+0(0)         P1             2
+1(1)         P1             1
+
+Proceso P1 solicita acceso a dirección virtual = 17
+-> La página está en la tabla de páginas del proceso actual.
+-> page-fault : el marco asociado a la página está en el disco.
+-> swap-out del marco 1 asociado al proceso P1.
+-> Se mapea la página 2 del proceso actual P1 al marco 1.
+---------------------------------------
+           MEMORIA PRINCIPAL
+---------------------------------------
+MARCO        PROCESO        ORDEN
+0(0)         P1             1
+1(1)         P1             2
+
+
+Ξ Cambio de contexto: P2 toma el control de la CPU.
+
+Proceso P2 solicita acceso a dirección virtual = 0
+-> page-fault : no existe la entrada en la tabla de páginas.
+-> swap-out del marco 0 asociado al proceso P1.
+-> Se mapea la página 0 del proceso actual P2 al marco 0.
+---------------------------------------
+           MEMORIA PRINCIPAL
+---------------------------------------
+MARCO        PROCESO        ORDEN
+0(0)         P2             2
+1(1)         P1             1
+
+Proceso P2 solicita acceso a dirección virtual = 8
+-> page-fault : no existe la entrada en la tabla de páginas.
+-> swap-out del marco 1 asociado al proceso P1.
+-> Se mapea la página 1 del proceso actual P2 al marco 1.
+---------------------------------------
+           MEMORIA PRINCIPAL
+---------------------------------------
+MARCO        PROCESO        ORDEN
+0(0)         P2             1
+1(1)         P2             2
+
+Proceso P2 solicita acceso a dirección virtual = 16
+-> page-fault : no existe la entrada en la tabla de páginas.
+-> swap-out del marco 0 asociado al proceso P2.
+-> Se mapea la página 2 del proceso actual P2 al marco 0.
+---------------------------------------
+           MEMORIA PRINCIPAL
+---------------------------------------
+MARCO        PROCESO        ORDEN
+0(0)         P2             2
+1(1)         P2             1
+
+Proceso P2 solicita acceso a dirección virtual = 24
+-> page-fault : no existe la entrada en la tabla de páginas.
+-> swap-out del marco 1 asociado al proceso P2.
+-> Se mapea la página 3 del proceso actual P2 al marco 1.
+---------------------------------------
+           MEMORIA PRINCIPAL
+---------------------------------------
+MARCO        PROCESO        ORDEN
+0(0)         P2             1
+1(1)         P2             2
+
+Proceso P2 solicita acceso a dirección virtual = 1
+-> La página está en la tabla de páginas del proceso actual.
+-> page-fault : el marco asociado a la página está en el disco.
+-> swap-out del marco 0 asociado al proceso P2.
+-> Se mapea la página 0 del proceso actual P2 al marco 0.
+---------------------------------------
+           MEMORIA PRINCIPAL
+---------------------------------------
+MARCO        PROCESO        ORDEN
+0(0)         P2             2
+1(1)         P2             1
+
+Proceso P2 solicita acceso a dirección virtual = 9
+-> La página está en la tabla de páginas del proceso actual.
+-> page-fault : el marco asociado a la página está en el disco.
+-> swap-out del marco 1 asociado al proceso P2.
+-> Se mapea la página 1 del proceso actual P2 al marco 1.
+---------------------------------------
+           MEMORIA PRINCIPAL
+---------------------------------------
+MARCO        PROCESO        ORDEN
+0(0)         P2             1
+1(1)         P2             2
+
+Proceso P2 solicita acceso a dirección virtual = 17
+-> La página está en la tabla de páginas del proceso actual.
+-> page-fault : el marco asociado a la página está en el disco.
+-> swap-out del marco 0 asociado al proceso P2.
+-> Se mapea la página 2 del proceso actual P2 al marco 0.
+---------------------------------------
+           MEMORIA PRINCIPAL
+---------------------------------------
+MARCO        PROCESO        ORDEN
+0(0)         P2             2
+1(1)         P2             1
+
+Proceso P2 solicita acceso a dirección virtual = 25
+-> La página está en la tabla de páginas del proceso actual.
+-> page-fault : el marco asociado a la página está en el disco.
+-> swap-out del marco 1 asociado al proceso P2.
+-> Se mapea la página 3 del proceso actual P2 al marco 1.
+---------------------------------------
+           MEMORIA PRINCIPAL
+---------------------------------------
+MARCO        PROCESO        ORDEN
+0(0)         P2             1
+1(1)         P2             2
+
+Proceso P2 solicita acceso a dirección virtual = 18
+-> La página está en la tabla de páginas del proceso actual.
+-> El marco asociado a la página ya está en la memoria principal.
+---------------------------------------
+           MEMORIA PRINCIPAL
+---------------------------------------
+MARCO        PROCESO        ORDEN
+0(0)         P2             1
+1(1)         P2             2
+
+Proceso P2 solicita acceso a dirección virtual = 26
+-> La página está en la tabla de páginas del proceso actual.
+-> El marco asociado a la página ya está en la memoria principal.
+---------------------------------------
+           MEMORIA PRINCIPAL
+---------------------------------------
+MARCO        PROCESO        ORDEN
+0(0)         P2             1
+1(1)         P2             2
+
+
+Ξ Cambio de contexto: P3 toma el control de la CPU.
+
+Proceso P3 solicita acceso a dirección virtual = 0
+-> page-fault : no existe la entrada en la tabla de páginas.
+-> swap-out del marco 0 asociado al proceso P2.
+-> Se mapea la página 0 del proceso actual P3 al marco 0.
+---------------------------------------
+           MEMORIA PRINCIPAL
+---------------------------------------
+MARCO        PROCESO        ORDEN
+0(0)         P3             2
+1(1)         P2             1
+
+Proceso P3 solicita acceso a dirección virtual = 8
+-> page-fault : no existe la entrada en la tabla de páginas.
+-> swap-out del marco 1 asociado al proceso P2.
+-> Se mapea la página 1 del proceso actual P3 al marco 1.
+---------------------------------------
+           MEMORIA PRINCIPAL
+---------------------------------------
+MARCO        PROCESO        ORDEN
+0(0)         P3             1
+1(1)         P3             2
+
+Proceso P3 solicita acceso a dirección virtual = 16
+-> page-fault : no existe la entrada en la tabla de páginas.
+-> swap-out del marco 0 asociado al proceso P3.
+-> Se mapea la página 2 del proceso actual P3 al marco 0.
+---------------------------------------
+           MEMORIA PRINCIPAL
+---------------------------------------
+MARCO        PROCESO        ORDEN
+0(0)         P3             2
+1(1)         P3             1
+
+Proceso P3 solicita acceso a dirección virtual = 24
+-> page-fault : no existe la entrada en la tabla de páginas.
+-> swap-out del marco 1 asociado al proceso P3.
+-> Se mapea la página 3 del proceso actual P3 al marco 1.
+---------------------------------------
+           MEMORIA PRINCIPAL
+---------------------------------------
+MARCO        PROCESO        ORDEN
+0(0)         P3             1
+1(1)         P3             2
+
+Proceso P3 solicita acceso a dirección virtual = 1
+-> La página está en la tabla de páginas del proceso actual.
+-> page-fault : el marco asociado a la página está en el disco.
+-> swap-out del marco 0 asociado al proceso P3.
+-> Se mapea la página 0 del proceso actual P3 al marco 0.
+---------------------------------------
+           MEMORIA PRINCIPAL
+---------------------------------------
+MARCO        PROCESO        ORDEN
+0(0)         P3             2
+1(1)         P3             1
+
+Proceso P3 solicita acceso a dirección virtual = 9
+-> La página está en la tabla de páginas del proceso actual.
+-> page-fault : el marco asociado a la página está en el disco.
+-> swap-out del marco 1 asociado al proceso P3.
+-> Se mapea la página 1 del proceso actual P3 al marco 1.
+---------------------------------------
+           MEMORIA PRINCIPAL
+---------------------------------------
+MARCO        PROCESO        ORDEN
+0(0)         P3             1
+1(1)         P3             2
+
+Proceso P3 solicita acceso a dirección virtual = 17
+-> La página está en la tabla de páginas del proceso actual.
+-> page-fault : el marco asociado a la página está en el disco.
+-> swap-out del marco 0 asociado al proceso P3.
+-> Se mapea la página 2 del proceso actual P3 al marco 0.
+---------------------------------------
+           MEMORIA PRINCIPAL
+---------------------------------------
+MARCO        PROCESO        ORDEN
+0(0)         P3             2
+1(1)         P3             1
+
+Proceso P3 solicita acceso a dirección virtual = 25
+-> La página está en la tabla de páginas del proceso actual.
+-> page-fault : el marco asociado a la página está en el disco.
+-> swap-out del marco 1 asociado al proceso P3.
+-> Se mapea la página 3 del proceso actual P3 al marco 1.
+---------------------------------------
+           MEMORIA PRINCIPAL
+---------------------------------------
+MARCO        PROCESO        ORDEN
+0(0)         P3             1
+1(1)         P3             2
+
+
+Ξ Cambio de contexto: P1 toma el control de la CPU.
+
+Proceso P1 solicita acceso a dirección virtual = 0
+-> La página está en la tabla de páginas del proceso actual.
+-> page-fault : el marco asociado a la página está en el disco.
+-> swap-out del marco 0 asociado al proceso P3.
+-> Se mapea la página 0 del proceso actual P1 al marco 0.
+---------------------------------------
+           MEMORIA PRINCIPAL
+---------------------------------------
+MARCO        PROCESO        ORDEN
+0(0)         P1             2
+1(1)         P3             1
+
+Proceso P1 solicita acceso a dirección virtual = 8
+-> La página está en la tabla de páginas del proceso actual.
+-> page-fault : el marco asociado a la página está en el disco.
+-> swap-out del marco 1 asociado al proceso P3.
+-> Se mapea la página 1 del proceso actual P1 al marco 1.
+---------------------------------------
+           MEMORIA PRINCIPAL
+---------------------------------------
+MARCO        PROCESO        ORDEN
+0(0)         P1             1
+1(1)         P1             2
+
+Proceso P1 solicita acceso a dirección virtual = 1
+-> La página está en la tabla de páginas del proceso actual.
+-> El marco asociado a la página ya está en la memoria principal.
+---------------------------------------
+           MEMORIA PRINCIPAL
+---------------------------------------
+MARCO        PROCESO        ORDEN
+0(0)         P1             1
+1(1)         P1             2
+
+Proceso P1 solicita acceso a dirección virtual = 9
+-> La página está en la tabla de páginas del proceso actual.
+-> El marco asociado a la página ya está en la memoria principal.
+---------------------------------------
+           MEMORIA PRINCIPAL
+---------------------------------------
+MARCO        PROCESO        ORDEN
+0(0)         P1             1
+1(1)         P1             2
+
+Proceso P1 solicita acceso a dirección virtual = 17
+-> La página está en la tabla de páginas del proceso actual.
+-> page-fault : el marco asociado a la página está en el disco.
+-> swap-out del marco 0 asociado al proceso P1.
+-> Se mapea la página 2 del proceso actual P1 al marco 0.
+---------------------------------------
+           MEMORIA PRINCIPAL
+---------------------------------------
+MARCO        PROCESO        ORDEN
+0(0)         P1             2
+1(1)         P1             1
+
+
+PROCESO: P1
+Páginas Utilizadas = 3
+Page-Faults = 9
+
+PROCESO: P2
+Páginas Utilizadas = 4
+Page-Faults = 8
+
+PROCESO: P3
+Páginas Utilizadas = 4
+Page-Faults = 8

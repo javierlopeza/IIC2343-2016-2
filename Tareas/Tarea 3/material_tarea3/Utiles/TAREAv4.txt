@@ -1,0 +1,469 @@
+DATA:
+path				0
+contador_general	0
+I 					0
+J 					0
+K 					0
+
+graph	0
+		1
+		0
+		0
+		0
+
+		0
+		0
+		1
+		0
+		0
+
+		0
+		0
+		0
+		1
+		0
+
+		0
+		0
+		0
+		0
+		1
+
+		0
+		0
+		0
+		0
+		0
+
+size 	5
+origin	2
+end		1
+
+indice_origin		0
+indice_end			0
+
+sqrsize		0
+sqrsize2	0
+var1 		0
+var2 		0 	
+var3		0
+var4		0
+var5		0
+i 			0
+
+factor1		0
+factor2		0
+producto	0
+parcial		0	
+
+size_squared	0
+
+matriz2			0
+
+
+CODE:
+
+// ----- (1) ----- OK
+
+bloque1:
+
+	//ind_origin = origin - 1
+	MOV A,(origin)
+	SUB A,1
+	MOV (indice_origin),A
+
+	//ind_end = end -1 
+	MOV A,(end)
+	SUB A,1
+	MOV (indice_end),A
+
+	//contador_general = size - 2
+	MOV A,(size)
+	SUB A,2
+	MOV (contador_general),A
+
+
+
+// ----- (2) -----
+
+bloque2:
+
+	// Calcular cuadrado del size
+	calcularcuadradosize: 
+	MOV A,(size)
+	MOV (sqrsize),A
+	MOV B,A
+	CMP A,1
+	JEQ create
+	sqra:
+		MOV A,(sqrsize)
+		ADD A,(size)
+		MOV (sqrsize),A
+		MOV A,B
+		SUB A,1
+		MOV B,A
+		CMP A,1
+		JNE sqra
+
+	// Crear matriz2 nula
+	crearmatriz2nula:
+		MOV A,0
+		MOV (i),A
+
+		create:
+			MOV B,matriz2
+			ADD A,B
+			MOV B,A
+			MOV (B),0
+
+			MOV A,(i)
+			ADD A,1
+			MOV (i),A
+			CMP A,(sqrsize)
+			JNE create
+
+	// Copiar graph en matriz2
+	copiar1en2:
+		MOV A,0
+		MOV (i),A
+
+		copy:
+			MOV B,matriz2
+			ADD A,B
+			MOV B,A
+			MOV (var2),B
+
+			MOV A,graph
+			ADD A,(i)
+			MOV B,A
+			MOV B,(B)
+			MOV A,B
+			MOV B,(var2)
+			MOV (B),A
+
+			MOV A,(i)
+			ADD A,1
+			MOV (i),A
+			CMP A,(sqrsize)
+			JNE copy
+
+JMP bloque3
+
+
+// ----- (multiplicar) -----
+
+multiplicar: 
+	// Multiplica los valores en las direcciones 'factor1' y 'factor2' y guarda el resultado en 'producto'.
+	// Limpiamos
+	MOV A,0
+	MOV (producto),A
+
+	// Verificar Factores Distintos de 0
+	MOV A,(factor1)
+	CMP A,0
+	JEQ endmultiplicar
+
+	JMP initmult
+
+	mult:
+		MOV A,0
+		MOV (parcial),A
+		MOV (i),A
+
+	startmult:
+		MOV A,(parcial)
+		ADD A,(var2)
+		MOV (parcial),A
+		MOV A,(i)
+		ADD A,1
+		MOV (i),A
+		MOV B,(var1)
+		CMP A,B
+		JLT startmult
+		RET
+
+	initmult:
+		MOV (var1),A
+		MOV A,(factor2)
+		MOV (var2),A
+		CALL mult
+		MOV A,(parcial)
+		MOV (producto),A
+		JMP endmultiplicar
+
+	endmultiplicar:
+		RET
+
+
+// ----- (3) ------
+
+bloque3:
+
+	// var3 = ind_origin*size
+	MOV A,(indice_origin)
+	MOV (factor1),A
+	MOV A,(size)
+	MOV (factor2),A
+	CALL multiplicar
+	MOV A,(producto)
+	MOV (var3),A
+
+	// var3 += ind_end
+	MOV B,(indice_end)
+	ADD A,B
+	MOV (var3),A
+
+	//var3 += dir graph
+	MOV B,A
+	MOV A,graph
+	ADD A,B
+	MOV (var3),A
+
+	// if matriz2[var3] == 1: ...
+	MOV B,(var3)
+	MOV A,(B)
+	CMP A,1
+	JNE bloque4
+
+	haypath:
+		MOV A,1
+		MOV (path),A
+		JMP end
+
+
+
+// ----- (4) ------
+
+bloque4:
+
+	whilegeneral:
+
+		// size_squared = multiplicar(size, size)
+		MOV A,(size)
+		MOV (factor1),A
+		MOV (factor2),A
+		CALL multiplicar
+		MOV A,(producto)
+		MOV (size_squared),A
+
+		// Crear matriz3 nula
+		crearmatriz3nula:
+			MOV A,(size_squared)
+			MOV (i),A
+			MOV B,(size_squared)
+			ADD (sqrsize2)
+			MOV A,(i)
+			crear3:
+				MOV B,matriz2
+				ADD A,B
+				MOV B,A
+				MOV (var2),B
+				MOV A,graph
+				SUB A,(size_squared)
+				ADD A,(i)
+				MOV B,A
+				MOV B,(B)
+				MOV A,B
+				MOV B,(var2)
+				MOV A,0
+				MOV (B),A
+
+				MOV A,(i)
+				ADD A,1
+				MOV (i),A
+				CMP A,(sqrsize2)
+				JNE crear3
+
+		// I = size - 1
+		MOV A,(size)
+		SUB A,1
+		MOV (I),A
+
+		whileI:
+			// J = size - 1
+			MOV A,(size)
+			SUB A,1
+			MOV (J),A
+
+			whileJ:
+				// K = size - 1
+				MOV A,(size)
+				SUB A,1
+				MOV (K),A
+
+				whileK:
+					// var4 = I * size
+					MOV A,(I) 
+					MOV (factor1),A
+					MOV A,(size)
+					MOV (factor2),A
+					CALL multiplicar
+					MOV A,(producto)
+
+					// var4 += K + dir matriz2
+					ADD A,(K)
+					ADD A,matriz2
+					MOV (var4),A
+
+					// var3 = K * size
+					MOV A,(K)
+					MOV (factor1),A
+					MOV A,(size)
+					MOV (factor2),A
+					CALL multiplicar
+					MOV A,(producto)
+
+					// var3 += J
+					ADD A,(J)
+					ADD A,graph
+					MOV (var3),A
+
+					// factor1 = matriz2[var4]
+					MOV B,(var4)
+					MOV A,(B)
+					MOV (factor2),A
+
+					// A = graph[var3]
+					MOV B,(var3)
+					MOV A,(B)
+
+					// var5 = graph[var3] AND factor2
+					MOV B,(factor2)
+					AND A,B
+					MOV (var5),A
+
+					// var3 = I * size
+					MOV A,(I)
+					MOV (factor1),A
+					MOV A,(size)
+					MOV (factor2),A
+					CALL multiplicar
+					MOV A,(producto)
+
+					// var3 += J + dir matriz2 
+					ADD A,(J)
+					ADD A,matriz2
+					ADD A,(sqrsize)
+					MOV (var3),A
+
+					// matriz3[var3] +=  var5
+					MOV B,A
+					MOV A,(B)
+					ADD A,(var5)
+					MOV (B),A
+
+					// K -= 1
+					MOV A,(K)
+					SUB A,1
+					MOV (K),A
+
+					// CMP K
+					CMP A,FFFFh
+					JEQ endK
+					CMP A,0
+					JGE whileK
+
+				endK:
+				// J -= 1
+				MOV A,(J)
+				SUB A,1
+				MOV (J),A
+
+				// CMP J
+				CMP A,FFFFh
+				JEQ endJ
+				CMP A,0
+				JGE whileJ
+
+			endJ:
+			// I -= 1
+			MOV A,(I)
+			SUB A,1
+			MOV (I),A
+
+			// CMP I
+			CMP A,FFFFh
+			JEQ endI
+			CMP A,0
+			JGE whileI
+
+		endI:
+
+		// Copiar matriz3 en matriz2
+		copiar3en2:
+			MOV A,0
+			MOV (i),A
+
+			copy23:
+				MOV B,matriz2
+				ADD A,B
+				MOV B,A
+				MOV (var2),B
+
+				MOV A,matriz2
+				ADD A,(sqrsize)
+				ADD A,(i)
+				MOV B,A
+				MOV B,(B)
+				MOV A,B
+				MOV B,(var2)
+				MOV (B),A
+
+				MOV A,(i)
+				ADD A,1
+				MOV (i),A
+				CMP A,(sqrsize)
+				JNE copy23
+
+		// var3 = ind_origin*size
+		MOV A,(indice_origin)
+		MOV (factor1),A
+		MOV A,(size)
+		MOV (factor2),A
+		CALL multiplicar
+		MOV A,(producto)
+		MOV (var3),A
+
+		// var3 += ind_end
+		MOV B, (indice_end)
+		ADD A,B
+		MOV (var3),A
+
+		// var3 += dir matriz2
+		MOV B,A
+		MOV A,matriz2
+		ADD A,B
+		MOV (var3),A
+
+		// if matriz2[var3] == 1: ...
+		MOV B,(var3)
+		MOV A,(B)
+		CMP A,1
+		JNE saltarhaypath
+
+		haypath2:
+			MOV A,1
+			MOV (path),A
+			JMP end
+
+		saltarhaypath:
+			// contador_general -= 1
+			MOV A,(contador_general)
+			SUB A,1
+			MOV (contador_general),A
+
+			// CMP contador_general
+			CMP A,0
+			JGT whilegeneral
+
+
+// ----- END ------
+end:
+
+
+
+
+
+
+
+

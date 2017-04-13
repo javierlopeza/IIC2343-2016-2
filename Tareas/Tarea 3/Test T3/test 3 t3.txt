@@ -1,0 +1,157 @@
+DATA:
+path	8
+size	10
+graph	0	
+		1	
+		1	
+		0	
+		0	
+		0	
+		0	
+		0	
+		0
+		0
+		0	
+		0	
+		0	
+		0
+		0	
+		0	
+		0	
+		0	
+		0	
+		0
+		0	
+		0	
+		0	
+		1	
+		1
+		0
+		0
+		0	
+		0
+		0
+		0
+		0
+		0
+		0	
+		0	
+		0	
+		0	
+		0
+		0
+		0
+		0
+		0	
+		0	
+		0	
+		0	
+		1
+		1
+		0
+		0
+		0
+		0
+		0
+		0
+		0
+		0	
+		0	
+		0	
+		0	
+		0	
+		0
+		0
+		0
+		0	
+		0	
+		0	
+		0	
+		0	
+		1
+		1	
+		0
+		0
+		0	
+		0
+		0	
+		0	
+		0
+		0
+		0
+		0
+		0
+		0	
+		0	
+		0	
+		0	
+		0
+		0	
+		0
+		0	
+		0	
+		1
+		0	
+		0	
+		0	
+		0
+		0	
+		0	
+		0	
+		0	
+		0
+		0
+origin	1
+end		10
+
+ res    0
+  i      0
+
+
+CODE: 
+		JMP init	
+
+	calculo: 
+		MOV B,0
+		MOV A,(size)
+		MOV (i),A
+	start:
+		MOV A,(res)
+		MOV B,(origin)
+		ADD A,B
+		MOV (res),A
+		MOV A,(i)
+		SUB A,1
+		MOV (i),A
+		CMP A,0
+		JNE start
+		MOV B,(end)
+		MOV A,(res)
+		ADD A,B
+		MOV B,(size)
+		SUB A,B
+		MOV (res),A
+		RET
+
+	busqueda: 
+		MOV B,graph
+		MOV A,(res)
+		
+	incrementacion:
+		CMP A,1
+		JEQ existencia
+		SUB A,1
+		INC B
+		JMP incrementacion
+
+	init : 
+		CALL calculo 
+		MOV A,0
+		MOV B,0
+		JMP busqueda 	
+
+	existencia: 
+		MOV A,(B)
+		MOV (path),A
+
+

@@ -1,0 +1,53 @@
+DATA:
+path	0
+graph	0
+		0
+		1
+		0
+origin	2
+end		1
+size	2
+
+ind		0
+i 		0
+
+
+CODE:
+MOV A,graph
+MOV (ind),A		// ind = graph
+
+
+MOV A,(end)
+SUB A,1
+MOV B,(ind)
+ADD A,B
+MOV (ind),A 	// ind = graph + end-1
+
+
+MOV A,(size)
+MOV (i),A
+
+mult:
+MOV A,(origin)
+SUB A,1
+ADD A,(ind)
+MOV (ind),A
+
+MOV A,(i)
+SUB A,1
+MOV (i),A
+CMP A,0
+JNE mult
+				// ind = graph + end-1 + (origin-1)*size
+
+
+MOV B,(ind)
+MOV A,(B)
+CMP A,1
+JNE end
+
+haypath:
+MOV A,1
+MOV (path),A
+
+end:

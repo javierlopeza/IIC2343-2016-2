@@ -1,0 +1,21 @@
+test1:
+    CANTIDAD DE PAGE FAULTS =  4
+    P2 tiene un total de 1 paginas
+    P1 tiene un total de 2 paginas
+    P3 tiene un total de 1 paginas
+
+test2:
+    CANTIDAD DE PAGE FAULTS =  14
+    P3 tiene un total de 7 paginas
+    P2 tiene un total de 1 paginas
+    P1 tiene un total de 2 paginas
+
+test3:
+    CANTIDAD DE PAGE FAULTS =  3
+    P1 tiene un total de 1 paginas
+    P2 tiene un total de 1 paginas
+    P3 tiene un total de 1 paginas
+
+test4:
+    CANTIDAD DE PAGE FAULTS =  12
+    P1 tiene un total de 10 paginas

@@ -1,0 +1,81 @@
+DATA:
+vector1 0
+		0
+		1
+vector2 1
+		0 
+		0
+prodpunto 0
+var1 0  
+var2 0 
+res 0 
+i 0
+iv1 0 
+iv2 0 
+size 3 
+
+CODE:
+
+MOV A,(size)
+MOV (iv2),A
+
+JMP init
+
+mult:
+MOV A,0
+MOV (res),A
+MOV (i),A
+
+MOV A,(var1)
+CMP A,0
+JEQ endstart:
+MOV A,(var2)
+
+start:
+MOV A,(res)
+ADD A,(var2)
+MOV (res),A
+MOV A,(i)
+ADD A,1
+MOV (i),A
+MOV B,(var1)
+CMP A,B
+JLT start
+endstart:
+RET
+
+init:
+MOV A,(vector1)
+MOV (var1),A
+MOV A,(vector2)
+MOV (var2),A
+CALL mult
+MOV A, (prodpunto)
+ADD A,(res)
+MOV (prodpunto),A
+
+continuar:
+// INC iv1, INC iv2
+MOV A,(iv2)
+ADD A,1
+MOV (iv2),A
+MOV A,(iv1)
+ADD A,1
+MOV (iv1),A
+MOV B,(size)
+CMP A,B
+JEQ end
+
+MOV B,(iv1)
+MOV A,(B)
+MOV (var1),A
+MOV B,(iv2)
+MOV A,(B)
+MOV (var2),A
+CALL mult
+MOV A,(prodpunto)
+ADD A,(res)
+MOV (prodpunto),A
+JMP continuar
+
+end:

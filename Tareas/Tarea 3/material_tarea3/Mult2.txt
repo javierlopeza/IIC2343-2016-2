@@ -1,0 +1,45 @@
+DATA:
+factor1 5
+factor2 25
+producto 0
+var1 0
+var2 0
+parcial 0
+i 0
+
+CODE:
+
+// Verificar Factores Distintos de 0
+MOV A,(factor1)
+CMP A,0
+JEQ end
+
+JMP init
+
+mult:
+MOV A,0
+MOV (parcial),A
+MOV (i),A
+
+start:
+MOV A,(parcial)
+ADD A,(var2)
+MOV (parcial),A
+MOV A,(i)
+ADD A,1
+MOV (i),A
+MOV B,(var1)
+CMP A,B
+JLT start
+RET
+
+init:
+MOV A,(factor1)
+MOV (var1),A
+MOV A,(factor2)
+MOV (var2),A
+CALL mult
+MOV A, (producto)
+ADD A,(parcial)
+MOV (producto),A
+end:

@@ -1,0 +1,54 @@
+DATA:
+vector1 0
+		1
+vector2 1
+		0
+prodpunto 0
+var1 0
+var2 0
+res 0
+i 0
+
+CODE:
+
+JMP init
+
+mult:
+MOV A,0
+MOV (res),A
+MOV (i),A
+
+start:
+MOV A,(res)
+ADD A,(var2)
+MOV (res),A
+MOV A,(i)
+ADD A,1
+MOV (i),A
+MOV B,(var1)
+CMP A,B
+JLT start
+RET
+
+init:
+MOV A,(vector1)
+MOV (var1),A
+MOV A,(vector2)
+MOV (var2),A
+CALL mult
+MOV A, (prodpunto)
+ADD A,(res)
+MOV (prodpunto),A
+
+MOV B,vector1
+INC B
+MOV A,(B)
+MOV (var1),A
+MOV B,vector2
+INC B
+MOV A,(B)
+MOV (var2),A
+CALL mult
+MOV A,(prodpunto)
+ADD A,(res)
+MOV (prodpunto),A

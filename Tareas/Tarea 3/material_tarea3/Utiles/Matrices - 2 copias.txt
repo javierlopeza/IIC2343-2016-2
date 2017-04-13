@@ -1,0 +1,150 @@
+DATA:
+matriz1	1	// INPUT
+		2
+		3
+		4
+		5
+		6
+		7
+		8
+		9
+
+size 3		// INPUT (numero de nodos)
+var1 0  	// DEFAULT 0
+var2 0 		// DEFAULT 0
+i 0			// DEFAULT 0
+im3 0		// indice matriz3
+sqrsize 0	// DEFAULT 0
+sqrsize2 0	// doble del cuadrado
+matriz2 0	// DEFAULT
+
+
+CODE:
+
+// Caso 1 Nodo
+MOV A,(size)
+CMP A,1
+JEQ end
+
+
+// Calcular cuadrado del size
+calcularcuadradosize:
+	MOV A,(size)
+	MOV (sqrsize),A
+	MOV B,A
+	CMP A,1
+	JEQ create
+	sqra:
+		MOV A,(sqrsize)
+		ADD A,(size)
+		MOV (sqrsize),A
+		MOV A,B
+		SUB A,1
+		MOV B,A
+		CMP A,1
+		JNE sqra
+
+
+// Crear matriz2 nula
+crearmatriz2nula:
+	MOV A,0
+	MOV (i),A
+
+	create:
+		MOV B,matriz2
+		ADD A,B
+		MOV B,A
+		MOV (B),0
+
+		MOV A,(i)
+		ADD A,1
+		MOV (i),A
+		CMP A,(sqrsize)
+		JNE create
+
+
+
+// Copiar matriz1 en matriz2
+copiar1en2:
+	MOV A,0
+	MOV (i),A
+
+	copy:
+		MOV B,matriz2
+		ADD A,B
+		MOV B,A
+		MOV (var2),B
+
+		MOV A,matriz1
+		ADD A,(i)
+		MOV B,A
+		MOV B,(B)
+		MOV A,B
+		MOV B,(var2)
+		MOV (B),A
+
+		MOV A,(i)
+		ADD A,1
+		MOV (i),A
+		CMP A,(sqrsize)
+		JNE copy
+
+// Crear matriz3 nula
+crearmatriz3nula:
+	MOV A,(sqrsize)
+	MOV (i),A
+	MOV B,(sqrsize)
+	ADD (sqrsize2)
+	MOV A,(i)
+
+	copy3:
+		MOV B,matriz2
+		ADD A,B
+		MOV B,A
+		MOV (var2),B
+		MOV A,matriz1
+		SUB A,(sqrsize)
+		ADD A,(i)
+		MOV B,A
+		MOV B,(B)
+		MOV A,B
+		MOV B,(var2)
+		MOV A,0
+		MOV (B),A
+
+		MOV A,(i)
+		ADD A,1
+		MOV (i),A
+		CMP A,(sqrsize2)
+		JNE copy3
+	JMP end  // <----------------------------- borrar
+
+// Copiar matriz1 en matriz 3
+copiar1en3:
+	MOV A,(sqrsize)
+	MOV (i),A
+	MOV B,(sqrsize)
+	ADD (sqrsize2)
+	MOV A,(i)
+
+	copy3:
+		MOV B,matriz2
+		ADD A,B
+		MOV B,A
+		MOV (var2),B
+		MOV A,matriz1
+		SUB A,(sqrsize)
+		ADD A,(i)
+		MOV B,A
+		MOV B,(B)
+		MOV A,B
+		MOV B,(var2)
+		MOV (B),A
+
+		MOV A,(i)
+		ADD A,1
+		MOV (i),A
+		CMP A,(sqrsize2)
+		JNE copy3
+
+end:

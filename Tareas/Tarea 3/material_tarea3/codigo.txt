@@ -1,0 +1,21 @@
+DATA:
+path	0
+size	2
+graph	0
+	1
+	0
+	0
+origin	1
+end	2
+
+CODE:
+
+MOV A,0
+MOV B,0
+MOV A,1239
+MOV (100),A
+PUSH A
+MOV A,10
+MOV (101),A
+POP A
+MOV (102),A

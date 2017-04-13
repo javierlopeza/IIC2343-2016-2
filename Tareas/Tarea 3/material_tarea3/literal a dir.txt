@@ -1,0 +1,4 @@
+DATA:
+label 0
+CODE:
+MOV (label),3

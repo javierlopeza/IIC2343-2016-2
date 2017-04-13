@@ -1,0 +1,26 @@
+DATA:
+CODE:
+
+// inputs
+MOV A,2
+MOV B,5
+
+// verificar ceros
+CMP A,0
+JEQ cero
+CMP B,0
+JEQ cero
+
+mult:
+SUB B,1
+ADD A,2
+CMP B,0
+JNE mult
+JMP end
+
+cero:
+MOV A,0
+MOV B,0
+JMP end
+
+end:

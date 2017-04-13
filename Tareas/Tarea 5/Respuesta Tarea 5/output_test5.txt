@@ -1,0 +1,785 @@
+- ESTADO INICIAL -
+CACHE:
+INDICE LINEA	UBICACION PALABRA	DIRECCION DATO	ORDEN	DIRTY
+00 (0)			0 (0)				      ( )		1		0
+00 (0)			1 (1)				      ( )		1		0
+01 (1)			0 (0)				      ( )		2		0
+01 (1)			1 (1)				      ( )		2		0
+10 (2)			0 (0)				      ( )		1		0
+10 (2)			1 (1)				      ( )		1		0
+11 (3)			0 (0)				      ( )		2		0
+11 (3)			1 (1)				      ( )		2		0
+
+Peticion Escritura: direccion = 00000(0)
+MISS! (linea dirty)
+CONJUNTO: 0
+CACHE:
+INDICE LINEA	UBICACION PALABRA	DIRECCION DATO	ORDEN	DIRTY
+00 (0)			0 (0)				00000 (0)		2		1
+00 (0)			1 (1)				00001 (1)		2		1
+01 (1)			0 (0)				      ( )		1		0
+01 (1)			1 (1)				      ( )		1		0
+10 (2)			0 (0)				      ( )		1		0
+10 (2)			1 (1)				      ( )		1		0
+11 (3)			0 (0)				      ( )		2		0
+11 (3)			1 (1)				      ( )		2		0
+
+Peticion Lectura: direccion = 00100(4)
+MISS!
+CONJUNTO: 0
+CACHE:
+INDICE LINEA	UBICACION PALABRA	DIRECCION DATO	ORDEN	DIRTY
+00 (0)			0 (0)				00000 (0)		1		1
+00 (0)			1 (1)				00001 (1)		1		1
+01 (1)			0 (0)				00100 (4)		2		0
+01 (1)			1 (1)				00101 (5)		2		0
+10 (2)			0 (0)				      ( )		1		0
+10 (2)			1 (1)				      ( )		1		0
+11 (3)			0 (0)				      ( )		2		0
+11 (3)			1 (1)				      ( )		2		0
+
+Peticion Lectura: direccion = 00001(1)
+HIT!
+CACHE:
+INDICE LINEA	UBICACION PALABRA	DIRECCION DATO	ORDEN	DIRTY
+00 (0)			0 (0)				00000 (0)		1		1
+00 (0)			1 (1)				00001 (1)		1		1
+01 (1)			0 (0)				00100 (4)		2		0
+01 (1)			1 (1)				00101 (5)		2		0
+10 (2)			0 (0)				      ( )		1		0
+10 (2)			1 (1)				      ( )		1		0
+11 (3)			0 (0)				      ( )		2		0
+11 (3)			1 (1)				      ( )		2		0
+
+Peticion Lectura: direccion = 00101(5)
+HIT!
+CACHE:
+INDICE LINEA	UBICACION PALABRA	DIRECCION DATO	ORDEN	DIRTY
+00 (0)			0 (0)				00000 (0)		1		1
+00 (0)			1 (1)				00001 (1)		1		1
+01 (1)			0 (0)				00100 (4)		2		0
+01 (1)			1 (1)				00101 (5)		2		0
+10 (2)			0 (0)				      ( )		1		0
+10 (2)			1 (1)				      ( )		1		0
+11 (3)			0 (0)				      ( )		2		0
+11 (3)			1 (1)				      ( )		2		0
+
+Peticion Escritura: direccion = 10111(23)
+MISS! (linea dirty)
+CONJUNTO: 1
+CACHE:
+INDICE LINEA	UBICACION PALABRA	DIRECCION DATO	ORDEN	DIRTY
+00 (0)			0 (0)				00000 (0)		1		1
+00 (0)			1 (1)				00001 (1)		1		1
+01 (1)			0 (0)				00100 (4)		2		0
+01 (1)			1 (1)				00101 (5)		2		0
+10 (2)			0 (0)				10110 (22)		2		1
+10 (2)			1 (1)				10111 (23)		2		1
+11 (3)			0 (0)				      ( )		1		0
+11 (3)			1 (1)				      ( )		1		0
+
+Peticion Lectura: direccion = 00110(6)
+MISS!
+CONJUNTO: 1
+CACHE:
+INDICE LINEA	UBICACION PALABRA	DIRECCION DATO	ORDEN	DIRTY
+00 (0)			0 (0)				00000 (0)		1		1
+00 (0)			1 (1)				00001 (1)		1		1
+01 (1)			0 (0)				00100 (4)		2		0
+01 (1)			1 (1)				00101 (5)		2		0
+10 (2)			0 (0)				10110 (22)		1		1
+10 (2)			1 (1)				10111 (23)		1		1
+11 (3)			0 (0)				00110 (6)		2		0
+11 (3)			1 (1)				00111 (7)		2		0
+
+Peticion Lectura: direccion = 00011(3)
+MISS!
+CONJUNTO: 1
+-> FIFO
+WRITE-HIT!
+CACHE:
+INDICE LINEA	UBICACION PALABRA	DIRECCION DATO	ORDEN	DIRTY
+00 (0)			0 (0)				00000 (0)		1		1
+00 (0)			1 (1)				00001 (1)		1		1
+01 (1)			0 (0)				00100 (4)		2		0
+01 (1)			1 (1)				00101 (5)		2		0
+10 (2)			0 (0)				00010 (2)		2		0
+10 (2)			1 (1)				00011 (3)		2		0
+11 (3)			0 (0)				00110 (6)		1		0
+11 (3)			1 (1)				00111 (7)		1		0
+
+Peticion Lectura: direccion = 00111(7)
+HIT!
+CACHE:
+INDICE LINEA	UBICACION PALABRA	DIRECCION DATO	ORDEN	DIRTY
+00 (0)			0 (0)				00000 (0)		1		1
+00 (0)			1 (1)				00001 (1)		1		1
+01 (1)			0 (0)				00100 (4)		2		0
+01 (1)			1 (1)				00101 (5)		2		0
+10 (2)			0 (0)				00010 (2)		2		0
+10 (2)			1 (1)				00011 (3)		2		0
+11 (3)			0 (0)				00110 (6)		1		0
+11 (3)			1 (1)				00111 (7)		1		0
+
+Peticion Lectura: direccion = 00011(3)
+HIT!
+CACHE:
+INDICE LINEA	UBICACION PALABRA	DIRECCION DATO	ORDEN	DIRTY
+00 (0)			0 (0)				00000 (0)		1		1
+00 (0)			1 (1)				00001 (1)		1		1
+01 (1)			0 (0)				00100 (4)		2		0
+01 (1)			1 (1)				00101 (5)		2		0
+10 (2)			0 (0)				00010 (2)		2		0
+10 (2)			1 (1)				00011 (3)		2		0
+11 (3)			0 (0)				00110 (6)		1		0
+11 (3)			1 (1)				00111 (7)		1		0
+
+Peticion Lectura: direccion = 01000(8)
+MISS!
+CONJUNTO: 0
+-> FIFO
+WRITE-HIT!
+CACHE:
+INDICE LINEA	UBICACION PALABRA	DIRECCION DATO	ORDEN	DIRTY
+00 (0)			0 (0)				01000 (8)		2		0
+00 (0)			1 (1)				01001 (9)		2		0
+01 (1)			0 (0)				00100 (4)		1		0
+01 (1)			1 (1)				00101 (5)		1		0
+10 (2)			0 (0)				00010 (2)		2		0
+10 (2)			1 (1)				00011 (3)		2		0
+11 (3)			0 (0)				00110 (6)		1		0
+11 (3)			1 (1)				00111 (7)		1		0
+
+Peticion Escritura: direccion = 00011(3)
+HIT! (linea dirty)
+CACHE:
+INDICE LINEA	UBICACION PALABRA	DIRECCION DATO	ORDEN	DIRTY
+00 (0)			0 (0)				01000 (8)		2		0
+00 (0)			1 (1)				01001 (9)		2		0
+01 (1)			0 (0)				00100 (4)		1		0
+01 (1)			1 (1)				00101 (5)		1		0
+10 (2)			0 (0)				00010 (2)		2		1
+10 (2)			1 (1)				00011 (3)		2		1
+11 (3)			0 (0)				00110 (6)		1		0
+11 (3)			1 (1)				00111 (7)		1		0
+
+Peticion Lectura: direccion = 00010(2)
+HIT!
+CACHE:
+INDICE LINEA	UBICACION PALABRA	DIRECCION DATO	ORDEN	DIRTY
+00 (0)			0 (0)				01000 (8)		2		0
+00 (0)			1 (1)				01001 (9)		2		0
+01 (1)			0 (0)				00100 (4)		1		0
+01 (1)			1 (1)				00101 (5)		1		0
+10 (2)			0 (0)				00010 (2)		2		1
+10 (2)			1 (1)				00011 (3)		2		1
+11 (3)			0 (0)				00110 (6)		1		0
+11 (3)			1 (1)				00111 (7)		1		0
+
+Peticion Lectura: direccion = 11000(24)
+MISS!
+CONJUNTO: 0
+-> FIFO
+CACHE:
+INDICE LINEA	UBICACION PALABRA	DIRECCION DATO	ORDEN	DIRTY
+00 (0)			0 (0)				01000 (8)		1		0
+00 (0)			1 (1)				01001 (9)		1		0
+01 (1)			0 (0)				11000 (24)		2		0
+01 (1)			1 (1)				11001 (25)		2		0
+10 (2)			0 (0)				00010 (2)		2		1
+10 (2)			1 (1)				00011 (3)		2		1
+11 (3)			0 (0)				00110 (6)		1		0
+11 (3)			1 (1)				00111 (7)		1		0
+
+Peticion Escritura: direccion = 01111(15)
+MISS! (linea dirty)
+CONJUNTO: 1
+-> FIFO
+CACHE:
+INDICE LINEA	UBICACION PALABRA	DIRECCION DATO	ORDEN	DIRTY
+00 (0)			0 (0)				01000 (8)		1		0
+00 (0)			1 (1)				01001 (9)		1		0
+01 (1)			0 (0)				11000 (24)		2		0
+01 (1)			1 (1)				11001 (25)		2		0
+10 (2)			0 (0)				00010 (2)		1		1
+10 (2)			1 (1)				00011 (3)		1		1
+11 (3)			0 (0)				01110 (14)		2		1
+11 (3)			1 (1)				01111 (15)		2		1
+
+Peticion Lectura: direccion = 01011(11)
+MISS!
+CONJUNTO: 1
+-> FIFO
+WRITE-HIT!
+CACHE:
+INDICE LINEA	UBICACION PALABRA	DIRECCION DATO	ORDEN	DIRTY
+00 (0)			0 (0)				01000 (8)		1		0
+00 (0)			1 (1)				01001 (9)		1		0
+01 (1)			0 (0)				11000 (24)		2		0
+01 (1)			1 (1)				11001 (25)		2		0
+10 (2)			0 (0)				01010 (10)		2		0
+10 (2)			1 (1)				01011 (11)		2		0
+11 (3)			0 (0)				01110 (14)		1		1
+11 (3)			1 (1)				01111 (15)		1		1
+
+Peticion Lectura: direccion = 00001(1)
+MISS!
+CONJUNTO: 0
+-> FIFO
+CACHE:
+INDICE LINEA	UBICACION PALABRA	DIRECCION DATO	ORDEN	DIRTY
+00 (0)			0 (0)				00000 (0)		2		0
+00 (0)			1 (1)				00001 (1)		2		0
+01 (1)			0 (0)				11000 (24)		1		0
+01 (1)			1 (1)				11001 (25)		1		0
+10 (2)			0 (0)				01010 (10)		2		0
+10 (2)			1 (1)				01011 (11)		2		0
+11 (3)			0 (0)				01110 (14)		1		1
+11 (3)			1 (1)				01111 (15)		1		1
+
+Peticion Lectura: direccion = 01100(12)
+MISS!
+CONJUNTO: 0
+-> FIFO
+CACHE:
+INDICE LINEA	UBICACION PALABRA	DIRECCION DATO	ORDEN	DIRTY
+00 (0)			0 (0)				00000 (0)		1		0
+00 (0)			1 (1)				00001 (1)		1		0
+01 (1)			0 (0)				01100 (12)		2		0
+01 (1)			1 (1)				01101 (13)		2		0
+10 (2)			0 (0)				01010 (10)		2		0
+10 (2)			1 (1)				01011 (11)		2		0
+11 (3)			0 (0)				01110 (14)		1		1
+11 (3)			1 (1)				01111 (15)		1		1
+
+Peticion Lectura: direccion = 00001(1)
+HIT!
+CACHE:
+INDICE LINEA	UBICACION PALABRA	DIRECCION DATO	ORDEN	DIRTY
+00 (0)			0 (0)				00000 (0)		1		0
+00 (0)			1 (1)				00001 (1)		1		0
+01 (1)			0 (0)				01100 (12)		2		0
+01 (1)			1 (1)				01101 (13)		2		0
+10 (2)			0 (0)				01010 (10)		2		0
+10 (2)			1 (1)				01011 (11)		2		0
+11 (3)			0 (0)				01110 (14)		1		1
+11 (3)			1 (1)				01111 (15)		1		1
+
+Peticion Escritura: direccion = 00000(0)
+HIT! (linea dirty)
+CACHE:
+INDICE LINEA	UBICACION PALABRA	DIRECCION DATO	ORDEN	DIRTY
+00 (0)			0 (0)				00000 (0)		1		1
+00 (0)			1 (1)				00001 (1)		1		1
+01 (1)			0 (0)				01100 (12)		2		0
+01 (1)			1 (1)				01101 (13)		2		0
+10 (2)			0 (0)				01010 (10)		2		0
+10 (2)			1 (1)				01011 (11)		2		0
+11 (3)			0 (0)				01110 (14)		1		1
+11 (3)			1 (1)				01111 (15)		1		1
+
+Peticion Lectura: direccion = 01101(13)
+HIT!
+CACHE:
+INDICE LINEA	UBICACION PALABRA	DIRECCION DATO	ORDEN	DIRTY
+00 (0)			0 (0)				00000 (0)		1		1
+00 (0)			1 (1)				00001 (1)		1		1
+01 (1)			0 (0)				01100 (12)		2		0
+01 (1)			1 (1)				01101 (13)		2		0
+10 (2)			0 (0)				01010 (10)		2		0
+10 (2)			1 (1)				01011 (11)		2		0
+11 (3)			0 (0)				01110 (14)		1		1
+11 (3)			1 (1)				01111 (15)		1		1
+
+Peticion Lectura: direccion = 01111(15)
+HIT!
+CACHE:
+INDICE LINEA	UBICACION PALABRA	DIRECCION DATO	ORDEN	DIRTY
+00 (0)			0 (0)				00000 (0)		1		1
+00 (0)			1 (1)				00001 (1)		1		1
+01 (1)			0 (0)				01100 (12)		2		0
+01 (1)			1 (1)				01101 (13)		2		0
+10 (2)			0 (0)				01010 (10)		2		0
+10 (2)			1 (1)				01011 (11)		2		0
+11 (3)			0 (0)				01110 (14)		1		1
+11 (3)			1 (1)				01111 (15)		1		1
+
+Peticion Lectura: direccion = 00000(0)
+HIT!
+CACHE:
+INDICE LINEA	UBICACION PALABRA	DIRECCION DATO	ORDEN	DIRTY
+00 (0)			0 (0)				00000 (0)		1		1
+00 (0)			1 (1)				00001 (1)		1		1
+01 (1)			0 (0)				01100 (12)		2		0
+01 (1)			1 (1)				01101 (13)		2		0
+10 (2)			0 (0)				01010 (10)		2		0
+10 (2)			1 (1)				01011 (11)		2		0
+11 (3)			0 (0)				01110 (14)		1		1
+11 (3)			1 (1)				01111 (15)		1		1
+
+Peticion Escritura: direccion = 11111(31)
+MISS! (linea dirty)
+CONJUNTO: 1
+-> FIFO
+WRITE-HIT!
+CACHE:
+INDICE LINEA	UBICACION PALABRA	DIRECCION DATO	ORDEN	DIRTY
+00 (0)			0 (0)				00000 (0)		1		1
+00 (0)			1 (1)				00001 (1)		1		1
+01 (1)			0 (0)				01100 (12)		2		0
+01 (1)			1 (1)				01101 (13)		2		0
+10 (2)			0 (0)				01010 (10)		1		0
+10 (2)			1 (1)				01011 (11)		1		0
+11 (3)			0 (0)				11110 (30)		2		1
+11 (3)			1 (1)				11111 (31)		2		1
+
+Peticion Lectura: direccion = 10000(16)
+MISS!
+CONJUNTO: 0
+-> FIFO
+WRITE-HIT!
+CACHE:
+INDICE LINEA	UBICACION PALABRA	DIRECCION DATO	ORDEN	DIRTY
+00 (0)			0 (0)				10000 (16)		2		0
+00 (0)			1 (1)				10001 (17)		2		0
+01 (1)			0 (0)				01100 (12)		1		0
+01 (1)			1 (1)				01101 (13)		1		0
+10 (2)			0 (0)				01010 (10)		1		0
+10 (2)			1 (1)				01011 (11)		1		0
+11 (3)			0 (0)				11110 (30)		2		1
+11 (3)			1 (1)				11111 (31)		2		1
+
+Peticion Lectura: direccion = 00100(4)
+MISS!
+CONJUNTO: 0
+-> FIFO
+CACHE:
+INDICE LINEA	UBICACION PALABRA	DIRECCION DATO	ORDEN	DIRTY
+00 (0)			0 (0)				10000 (16)		1		0
+00 (0)			1 (1)				10001 (17)		1		0
+01 (1)			0 (0)				00100 (4)		2		0
+01 (1)			1 (1)				00101 (5)		2		0
+10 (2)			0 (0)				01010 (10)		1		0
+10 (2)			1 (1)				01011 (11)		1		0
+11 (3)			0 (0)				11110 (30)		2		1
+11 (3)			1 (1)				11111 (31)		2		1
+
+Peticion Lectura: direccion = 00001(1)
+MISS!
+CONJUNTO: 0
+-> FIFO
+CACHE:
+INDICE LINEA	UBICACION PALABRA	DIRECCION DATO	ORDEN	DIRTY
+00 (0)			0 (0)				00000 (0)		2		0
+00 (0)			1 (1)				00001 (1)		2		0
+01 (1)			0 (0)				00100 (4)		1		0
+01 (1)			1 (1)				00101 (5)		1		0
+10 (2)			0 (0)				01010 (10)		1		0
+10 (2)			1 (1)				01011 (11)		1		0
+11 (3)			0 (0)				11110 (30)		2		1
+11 (3)			1 (1)				11111 (31)		2		1
+
+Peticion Lectura: direccion = 00101(5)
+HIT!
+CACHE:
+INDICE LINEA	UBICACION PALABRA	DIRECCION DATO	ORDEN	DIRTY
+00 (0)			0 (0)				00000 (0)		2		0
+00 (0)			1 (1)				00001 (1)		2		0
+01 (1)			0 (0)				00100 (4)		1		0
+01 (1)			1 (1)				00101 (5)		1		0
+10 (2)			0 (0)				01010 (10)		1		0
+10 (2)			1 (1)				01011 (11)		1		0
+11 (3)			0 (0)				11110 (30)		2		1
+11 (3)			1 (1)				11111 (31)		2		1
+
+Peticion Lectura: direccion = 00110(6)
+MISS!
+CONJUNTO: 1
+-> FIFO
+CACHE:
+INDICE LINEA	UBICACION PALABRA	DIRECCION DATO	ORDEN	DIRTY
+00 (0)			0 (0)				00000 (0)		2		0
+00 (0)			1 (1)				00001 (1)		2		0
+01 (1)			0 (0)				00100 (4)		1		0
+01 (1)			1 (1)				00101 (5)		1		0
+10 (2)			0 (0)				00110 (6)		2		0
+10 (2)			1 (1)				00111 (7)		2		0
+11 (3)			0 (0)				11110 (30)		1		1
+11 (3)			1 (1)				11111 (31)		1		1
+
+Peticion Lectura: direccion = 00011(3)
+MISS!
+CONJUNTO: 1
+-> FIFO
+WRITE-HIT!
+CACHE:
+INDICE LINEA	UBICACION PALABRA	DIRECCION DATO	ORDEN	DIRTY
+00 (0)			0 (0)				00000 (0)		2		0
+00 (0)			1 (1)				00001 (1)		2		0
+01 (1)			0 (0)				00100 (4)		1		0
+01 (1)			1 (1)				00101 (5)		1		0
+10 (2)			0 (0)				00110 (6)		1		0
+10 (2)			1 (1)				00111 (7)		1		0
+11 (3)			0 (0)				00010 (2)		2		0
+11 (3)			1 (1)				00011 (3)		2		0
+
+Peticion Lectura: direccion = 00111(7)
+HIT!
+CACHE:
+INDICE LINEA	UBICACION PALABRA	DIRECCION DATO	ORDEN	DIRTY
+00 (0)			0 (0)				00000 (0)		2		0
+00 (0)			1 (1)				00001 (1)		2		0
+01 (1)			0 (0)				00100 (4)		1		0
+01 (1)			1 (1)				00101 (5)		1		0
+10 (2)			0 (0)				00110 (6)		1		0
+10 (2)			1 (1)				00111 (7)		1		0
+11 (3)			0 (0)				00010 (2)		2		0
+11 (3)			1 (1)				00011 (3)		2		0
+
+Peticion Escritura: direccion = 11010(26)
+MISS! (linea dirty)
+CONJUNTO: 1
+-> FIFO
+CACHE:
+INDICE LINEA	UBICACION PALABRA	DIRECCION DATO	ORDEN	DIRTY
+00 (0)			0 (0)				00000 (0)		2		0
+00 (0)			1 (1)				00001 (1)		2		0
+01 (1)			0 (0)				00100 (4)		1		0
+01 (1)			1 (1)				00101 (5)		1		0
+10 (2)			0 (0)				11010 (26)		2		1
+10 (2)			1 (1)				11011 (27)		2		1
+11 (3)			0 (0)				00010 (2)		1		0
+11 (3)			1 (1)				00011 (3)		1		0
+
+Peticion Lectura: direccion = 00011(3)
+HIT!
+CACHE:
+INDICE LINEA	UBICACION PALABRA	DIRECCION DATO	ORDEN	DIRTY
+00 (0)			0 (0)				00000 (0)		2		0
+00 (0)			1 (1)				00001 (1)		2		0
+01 (1)			0 (0)				00100 (4)		1		0
+01 (1)			1 (1)				00101 (5)		1		0
+10 (2)			0 (0)				11010 (26)		2		1
+10 (2)			1 (1)				11011 (27)		2		1
+11 (3)			0 (0)				00010 (2)		1		0
+11 (3)			1 (1)				00011 (3)		1		0
+
+Peticion Lectura: direccion = 01000(8)
+MISS!
+CONJUNTO: 0
+-> FIFO
+CACHE:
+INDICE LINEA	UBICACION PALABRA	DIRECCION DATO	ORDEN	DIRTY
+00 (0)			0 (0)				00000 (0)		1		0
+00 (0)			1 (1)				00001 (1)		1		0
+01 (1)			0 (0)				01000 (8)		2		0
+01 (1)			1 (1)				01001 (9)		2		0
+10 (2)			0 (0)				11010 (26)		2		1
+10 (2)			1 (1)				11011 (27)		2		1
+11 (3)			0 (0)				00010 (2)		1		0
+11 (3)			1 (1)				00011 (3)		1		0
+
+Peticion Lectura: direccion = 01001(9)
+HIT!
+CACHE:
+INDICE LINEA	UBICACION PALABRA	DIRECCION DATO	ORDEN	DIRTY
+00 (0)			0 (0)				00000 (0)		1		0
+00 (0)			1 (1)				00001 (1)		1		0
+01 (1)			0 (0)				01000 (8)		2		0
+01 (1)			1 (1)				01001 (9)		2		0
+10 (2)			0 (0)				11010 (26)		2		1
+10 (2)			1 (1)				11011 (27)		2		1
+11 (3)			0 (0)				00010 (2)		1		0
+11 (3)			1 (1)				00011 (3)		1		0
+
+Peticion Escritura: direccion = 00111(7)
+MISS! (linea dirty)
+CONJUNTO: 1
+-> FIFO
+CACHE:
+INDICE LINEA	UBICACION PALABRA	DIRECCION DATO	ORDEN	DIRTY
+00 (0)			0 (0)				00000 (0)		1		0
+00 (0)			1 (1)				00001 (1)		1		0
+01 (1)			0 (0)				01000 (8)		2		0
+01 (1)			1 (1)				01001 (9)		2		0
+10 (2)			0 (0)				11010 (26)		1		1
+10 (2)			1 (1)				11011 (27)		1		1
+11 (3)			0 (0)				00110 (6)		2		1
+11 (3)			1 (1)				00111 (7)		2		1
+
+Peticion Lectura: direccion = 00000(0)
+HIT!
+CACHE:
+INDICE LINEA	UBICACION PALABRA	DIRECCION DATO	ORDEN	DIRTY
+00 (0)			0 (0)				00000 (0)		1		0
+00 (0)			1 (1)				00001 (1)		1		0
+01 (1)			0 (0)				01000 (8)		2		0
+01 (1)			1 (1)				01001 (9)		2		0
+10 (2)			0 (0)				11010 (26)		1		1
+10 (2)			1 (1)				11011 (27)		1		1
+11 (3)			0 (0)				00110 (6)		2		1
+11 (3)			1 (1)				00111 (7)		2		1
+
+Peticion Lectura: direccion = 01010(10)
+MISS!
+CONJUNTO: 1
+-> FIFO
+WRITE-HIT!
+CACHE:
+INDICE LINEA	UBICACION PALABRA	DIRECCION DATO	ORDEN	DIRTY
+00 (0)			0 (0)				00000 (0)		1		0
+00 (0)			1 (1)				00001 (1)		1		0
+01 (1)			0 (0)				01000 (8)		2		0
+01 (1)			1 (1)				01001 (9)		2		0
+10 (2)			0 (0)				01010 (10)		2		0
+10 (2)			1 (1)				01011 (11)		2		0
+11 (3)			0 (0)				00110 (6)		1		1
+11 (3)			1 (1)				00111 (7)		1		1
+
+Peticion Lectura: direccion = 00010(2)
+MISS!
+CONJUNTO: 1
+-> FIFO
+WRITE-HIT!
+CACHE:
+INDICE LINEA	UBICACION PALABRA	DIRECCION DATO	ORDEN	DIRTY
+00 (0)			0 (0)				00000 (0)		1		0
+00 (0)			1 (1)				00001 (1)		1		0
+01 (1)			0 (0)				01000 (8)		2		0
+01 (1)			1 (1)				01001 (9)		2		0
+10 (2)			0 (0)				01010 (10)		1		0
+10 (2)			1 (1)				01011 (11)		1		0
+11 (3)			0 (0)				00010 (2)		2		0
+11 (3)			1 (1)				00011 (3)		2		0
+
+Peticion Lectura: direccion = 01011(11)
+HIT!
+CACHE:
+INDICE LINEA	UBICACION PALABRA	DIRECCION DATO	ORDEN	DIRTY
+00 (0)			0 (0)				00000 (0)		1		0
+00 (0)			1 (1)				00001 (1)		1		0
+01 (1)			0 (0)				01000 (8)		2		0
+01 (1)			1 (1)				01001 (9)		2		0
+10 (2)			0 (0)				01010 (10)		1		0
+10 (2)			1 (1)				01011 (11)		1		0
+11 (3)			0 (0)				00010 (2)		2		0
+11 (3)			1 (1)				00011 (3)		2		0
+
+Peticion Lectura: direccion = 00001(1)
+HIT!
+CACHE:
+INDICE LINEA	UBICACION PALABRA	DIRECCION DATO	ORDEN	DIRTY
+00 (0)			0 (0)				00000 (0)		1		0
+00 (0)			1 (1)				00001 (1)		1		0
+01 (1)			0 (0)				01000 (8)		2		0
+01 (1)			1 (1)				01001 (9)		2		0
+10 (2)			0 (0)				01010 (10)		1		0
+10 (2)			1 (1)				01011 (11)		1		0
+11 (3)			0 (0)				00010 (2)		2		0
+11 (3)			1 (1)				00011 (3)		2		0
+
+Peticion Escritura: direccion = 10101(21)
+MISS! (linea dirty)
+CONJUNTO: 0
+-> FIFO
+CACHE:
+INDICE LINEA	UBICACION PALABRA	DIRECCION DATO	ORDEN	DIRTY
+00 (0)			0 (0)				10100 (20)		2		1
+00 (0)			1 (1)				10101 (21)		2		1
+01 (1)			0 (0)				01000 (8)		1		0
+01 (1)			1 (1)				01001 (9)		1		0
+10 (2)			0 (0)				01010 (10)		1		0
+10 (2)			1 (1)				01011 (11)		1		0
+11 (3)			0 (0)				00010 (2)		2		0
+11 (3)			1 (1)				00011 (3)		2		0
+
+Peticion Lectura: direccion = 01100(12)
+MISS!
+CONJUNTO: 0
+-> FIFO
+CACHE:
+INDICE LINEA	UBICACION PALABRA	DIRECCION DATO	ORDEN	DIRTY
+00 (0)			0 (0)				10100 (20)		1		1
+00 (0)			1 (1)				10101 (21)		1		1
+01 (1)			0 (0)				01100 (12)		2		0
+01 (1)			1 (1)				01101 (13)		2		0
+10 (2)			0 (0)				01010 (10)		1		0
+10 (2)			1 (1)				01011 (11)		1		0
+11 (3)			0 (0)				00010 (2)		2		0
+11 (3)			1 (1)				00011 (3)		2		0
+
+Peticion Lectura: direccion = 00001(1)
+MISS!
+CONJUNTO: 0
+-> FIFO
+WRITE-HIT!
+CACHE:
+INDICE LINEA	UBICACION PALABRA	DIRECCION DATO	ORDEN	DIRTY
+00 (0)			0 (0)				00000 (0)		2		0
+00 (0)			1 (1)				00001 (1)		2		0
+01 (1)			0 (0)				01100 (12)		1		0
+01 (1)			1 (1)				01101 (13)		1		0
+10 (2)			0 (0)				01010 (10)		1		0
+10 (2)			1 (1)				01011 (11)		1		0
+11 (3)			0 (0)				00010 (2)		2		0
+11 (3)			1 (1)				00011 (3)		2		0
+
+Peticion Lectura: direccion = 01101(13)
+HIT!
+CACHE:
+INDICE LINEA	UBICACION PALABRA	DIRECCION DATO	ORDEN	DIRTY
+00 (0)			0 (0)				00000 (0)		2		0
+00 (0)			1 (1)				00001 (1)		2		0
+01 (1)			0 (0)				01100 (12)		1		0
+01 (1)			1 (1)				01101 (13)		1		0
+10 (2)			0 (0)				01010 (10)		1		0
+10 (2)			1 (1)				01011 (11)		1		0
+11 (3)			0 (0)				00010 (2)		2		0
+11 (3)			1 (1)				00011 (3)		2		0
+
+Peticion Escritura: direccion = 01101(13)
+HIT! (linea dirty)
+CACHE:
+INDICE LINEA	UBICACION PALABRA	DIRECCION DATO	ORDEN	DIRTY
+00 (0)			0 (0)				00000 (0)		2		0
+00 (0)			1 (1)				00001 (1)		2		0
+01 (1)			0 (0)				01100 (12)		1		1
+01 (1)			1 (1)				01101 (13)		1		1
+10 (2)			0 (0)				01010 (10)		1		0
+10 (2)			1 (1)				01011 (11)		1		0
+11 (3)			0 (0)				00010 (2)		2		0
+11 (3)			1 (1)				00011 (3)		2		0
+
+Peticion Lectura: direccion = 01110(14)
+MISS!
+CONJUNTO: 1
+-> FIFO
+CACHE:
+INDICE LINEA	UBICACION PALABRA	DIRECCION DATO	ORDEN	DIRTY
+00 (0)			0 (0)				00000 (0)		2		0
+00 (0)			1 (1)				00001 (1)		2		0
+01 (1)			0 (0)				01100 (12)		1		1
+01 (1)			1 (1)				01101 (13)		1		1
+10 (2)			0 (0)				01110 (14)		2		0
+10 (2)			1 (1)				01111 (15)		2		0
+11 (3)			0 (0)				00010 (2)		1		0
+11 (3)			1 (1)				00011 (3)		1		0
+
+Peticion Escritura: direccion = 00000(0)
+HIT! (linea dirty)
+CACHE:
+INDICE LINEA	UBICACION PALABRA	DIRECCION DATO	ORDEN	DIRTY
+00 (0)			0 (0)				00000 (0)		2		1
+00 (0)			1 (1)				00001 (1)		2		1
+01 (1)			0 (0)				01100 (12)		1		1
+01 (1)			1 (1)				01101 (13)		1		1
+10 (2)			0 (0)				01110 (14)		2		0
+10 (2)			1 (1)				01111 (15)		2		0
+11 (3)			0 (0)				00010 (2)		1		0
+11 (3)			1 (1)				00011 (3)		1		0
+
+Peticion Escritura: direccion = 00011(3)
+HIT! (linea dirty)
+CACHE:
+INDICE LINEA	UBICACION PALABRA	DIRECCION DATO	ORDEN	DIRTY
+00 (0)			0 (0)				00000 (0)		2		1
+00 (0)			1 (1)				00001 (1)		2		1
+01 (1)			0 (0)				01100 (12)		1		1
+01 (1)			1 (1)				01101 (13)		1		1
+10 (2)			0 (0)				01110 (14)		2		0
+10 (2)			1 (1)				01111 (15)		2		0
+11 (3)			0 (0)				00010 (2)		1		1
+11 (3)			1 (1)				00011 (3)		1		1
+
+Peticion Lectura: direccion = 01000(8)
+MISS!
+CONJUNTO: 0
+-> FIFO
+WRITE-HIT!
+CACHE:
+INDICE LINEA	UBICACION PALABRA	DIRECCION DATO	ORDEN	DIRTY
+00 (0)			0 (0)				00000 (0)		1		1
+00 (0)			1 (1)				00001 (1)		1		1
+01 (1)			0 (0)				01000 (8)		2		0
+01 (1)			1 (1)				01001 (9)		2		0
+10 (2)			0 (0)				01110 (14)		2		0
+10 (2)			1 (1)				01111 (15)		2		0
+11 (3)			0 (0)				00010 (2)		1		1
+11 (3)			1 (1)				00011 (3)		1		1
+
+Peticion Escritura: direccion = 01001(9)
+HIT! (linea dirty)
+CACHE:
+INDICE LINEA	UBICACION PALABRA	DIRECCION DATO	ORDEN	DIRTY
+00 (0)			0 (0)				00000 (0)		1		1
+00 (0)			1 (1)				00001 (1)		1		1
+01 (1)			0 (0)				01000 (8)		2		1
+01 (1)			1 (1)				01001 (9)		2		1
+10 (2)			0 (0)				01110 (14)		2		0
+10 (2)			1 (1)				01111 (15)		2		0
+11 (3)			0 (0)				00010 (2)		1		1
+11 (3)			1 (1)				00011 (3)		1		1
+
+Peticion Lectura: direccion = 11011(27)
+MISS!
+CONJUNTO: 1
+-> FIFO
+WRITE-HIT!
+CACHE:
+INDICE LINEA	UBICACION PALABRA	DIRECCION DATO	ORDEN	DIRTY
+00 (0)			0 (0)				00000 (0)		1		1
+00 (0)			1 (1)				00001 (1)		1		1
+01 (1)			0 (0)				01000 (8)		2		1
+01 (1)			1 (1)				01001 (9)		2		1
+10 (2)			0 (0)				01110 (14)		1		0
+10 (2)			1 (1)				01111 (15)		1		0
+11 (3)			0 (0)				11010 (26)		2		0
+11 (3)			1 (1)				11011 (27)		2		0
+
+Peticion Escritura: direccion = 01000(8)
+HIT! (linea dirty)
+CACHE:
+INDICE LINEA	UBICACION PALABRA	DIRECCION DATO	ORDEN	DIRTY
+00 (0)			0 (0)				00000 (0)		1		1
+00 (0)			1 (1)				00001 (1)		1		1
+01 (1)			0 (0)				01000 (8)		2		1
+01 (1)			1 (1)				01001 (9)		2		1
+10 (2)			0 (0)				01110 (14)		1		0
+10 (2)			1 (1)				01111 (15)		1		0
+11 (3)			0 (0)				11010 (26)		2		0
+11 (3)			1 (1)				11011 (27)		2		0
+
+Peticion Escritura: direccion = 01010(10)
+MISS! (linea dirty)
+CONJUNTO: 1
+-> FIFO
+CACHE:
+INDICE LINEA	UBICACION PALABRA	DIRECCION DATO	ORDEN	DIRTY
+00 (0)			0 (0)				00000 (0)		1		1
+00 (0)			1 (1)				00001 (1)		1		1
+01 (1)			0 (0)				01000 (8)		2		1
+01 (1)			1 (1)				01001 (9)		2		1
+10 (2)			0 (0)				01010 (10)		2		1
+10 (2)			1 (1)				01011 (11)		2		1
+11 (3)			0 (0)				11010 (26)		1		0
+11 (3)			1 (1)				11011 (27)		1		0
+
+Peticion Lectura: direccion = 01010(10)
+HIT!
+CACHE:
+INDICE LINEA	UBICACION PALABRA	DIRECCION DATO	ORDEN	DIRTY
+00 (0)			0 (0)				00000 (0)		1		1
+00 (0)			1 (1)				00001 (1)		1		1
+01 (1)			0 (0)				01000 (8)		2		1
+01 (1)			1 (1)				01001 (9)		2		1
+10 (2)			0 (0)				01010 (10)		2		1
+10 (2)			1 (1)				01011 (11)		2		1
+11 (3)			0 (0)				11010 (26)		1		0
+11 (3)			1 (1)				11011 (27)		1		0
+
+----------------
+Nº HITS = 25
+Nº MISS = 29
+HIT-RATE = 25/54 = 0.46296296296296297
+WRITE-RATE = 11/15 = 0.7333333333333333
+----------------

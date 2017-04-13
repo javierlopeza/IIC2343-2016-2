@@ -1,0 +1,43 @@
+test1:
+    PROCESO: P1
+    Páginas Utilizadas = 2
+    Page-Faults = 2
+
+    PROCESO: P2
+    Páginas Utilizadas = 1
+    Page-Faults = 1
+
+    PROCESO: P3
+    Páginas Utilizadas = 1
+    Page-Faults = 1
+
+test2:
+    PROCESO: P1
+    Páginas Utilizadas = 2
+    Page-Faults = 4
+
+    PROCESO: P2
+    Páginas Utilizadas = 1
+    Page-Faults = 1
+
+    PROCESO: P3
+    Páginas Utilizadas = 7
+    Page-Faults = 7
+
+test3:
+    PROCESO: P1
+    Páginas Utilizadas = 1
+    Page-Faults = 1
+
+    PROCESO: P2
+    Páginas Utilizadas = 1
+    Page-Faults = 1
+
+    PROCESO: P3
+    Páginas Utilizadas = 1
+    Page-Faults = 1
+
+test4:
+    PROCESO: P1
+    Páginas Utilizadas = 10
+    Page-Faults = 12

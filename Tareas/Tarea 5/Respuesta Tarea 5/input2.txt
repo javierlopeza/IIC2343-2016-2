@@ -1,0 +1,11 @@
+CACHE_SIZE=8 
+LINE_SIZE=2 
+MEM_SIZE=32 
+CORR=DM
+ SUBS=FIFO 
+WRITE=WB
+SEC=4,3,5,2,6,3,7,0,8,9,0,10,1,11,12,4,3,5,2,6,3,7,0,8,9,0,10,1,11,12
+
+Fuente: Ejemplo Caché Unified - Apuntes Memoria Caché
+
+HIT-RATE = 16/30

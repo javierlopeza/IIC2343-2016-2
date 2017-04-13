@@ -1,0 +1,124 @@
+DATA:
+base	0
+res		0
+ipot	0
+
+factor1 0
+factor2 0
+producto 0
+var1 0
+var2 0
+parcial 0
+i 0
+
+CODE:
+
+MOV A,5		// Valor Registro A hardcodeado
+MOV B,3		// Valor Registro B hardcodeado
+
+
+MOV (base),A
+
+MOV (ipot),B
+
+// --- CASOS EXCEPCIONALES ---
+// Verificar base distinta de 1
+CMP A,1
+JEQ baseuno
+
+// Verificar exponente distinto de 0
+MOV A,B
+CMP A,0
+JEQ expcero
+
+// Verificar exponente distinto de 1
+CMP A,1
+JEQ expuno
+// -------------------------------
+
+// Pasamos los factores de la multiplicacion a la subrutina
+MOV A,(base)
+MOV (factor1),A
+MOV (factor2),A
+
+// Subrutina multiplicacion master
+
+multmaster:
+// Verificar factores distintos de 0
+MOV A,(factor1)
+CMP A,0
+JEQ endmult
+
+JMP init
+
+mult:
+MOV A,0
+MOV (parcial),A
+MOV (i),A
+
+start:
+MOV A,(parcial)
+ADD A,(var2)
+MOV (parcial),A
+MOV A,(i)
+ADD A,1
+MOV (i),A
+MOV B,(var1)
+CMP A,B
+JLT start
+RET
+
+init:
+MOV A,(factor1)
+MOV (var1),A
+MOV A,(factor2)
+MOV (var2),A
+CALL mult
+MOV A,(producto)
+ADD A,(parcial)
+MOV (producto),A
+MOV (res),A
+endmult:
+
+// Verificamos si la operacion de potencia esta terminada
+MOV A,(ipot)
+SUB A,1
+MOV (ipot),A
+CMP A,1
+JNE continuarpot	// Queda por potenciar
+CMP A,1
+JEQ end 			// Potencia terminada
+
+// Preparamos los registros y factores para nueva multiplicacion
+continuarpot:
+MOV A,(base)
+MOV (factor1),A
+MOV A,(res)
+MOV (factor2),A
+MOV A,0
+MOV (producto),A
+JMP multmaster
+
+// --- Jumps de Casos Excepcionales ---
+baseuno:
+MOV A,1
+MOV (res),A
+JMP end
+
+expcero:
+MOV A,1
+MOV (res),A
+JMP end
+
+expuno:
+MOV A,(base)
+MOV (res),A
+JMP end
+// ----------------------
+
+
+end:
+MOV A,(res)		// Cargamos el resultado de la potencia en el registro A
+
+
+
